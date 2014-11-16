@@ -12,11 +12,15 @@ import Foundation
 
 class ViewController: UIViewController {
     
+    @IBOutlet var genderLabel: UILabel!
+    @IBOutlet var bloodTypeLabel: UILabel!
+    @IBOutlet var dateOfBirth: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         accessHealthStore()
+    
     }
 
     override func didReceiveMemoryWarning() {
@@ -50,6 +54,8 @@ class ViewController: UIViewController {
             if success
             {
                 println("Request Authorization Successful")
+                self.queryingHealthCharacteristicType(healthStore!)
+                
             }
             else
             {
@@ -58,7 +64,24 @@ class ViewController: UIViewController {
         })
     }
     
-
+    
+    func queryingHealthCharacteristicType(healthStore: HKHealthStore){
+        
+        //querying date Of Birth
+        var dateOfBirth: NSDate?
+        dateOfBirth = healthStore.dateOfBirthWithError(nil)
+        
+        if dateOfBirth != nil
+        {
+            var stringVersionOfDateOfBirth: String?
+            stringVersionOfDateOfBirth = NSDateFormatter.localizedStringFromDate(dateOfBirth!, dateStyle:.MediumStyle, timeStyle: .NoStyle)
+            
+            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                self.dateOfBirth.text = stringVersionOfDateOfBirth!
+            })
+        }
+    }
+        
     
 
     
