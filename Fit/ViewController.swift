@@ -107,7 +107,19 @@ class ViewController: UIViewController {
             }
         }
         
+        //query user's gender
+        let gender = healthStore.biologicalSexWithError(nil)
         
+        if (gender != nil) {
+            switch gender.biologicalSex{
+            case .Female:
+                self.genderLabel.text = "Female"
+            case .Male:
+                self.genderLabel.text = "Male"
+            case .NotSet:
+                self.genderLabel.text = "User has not set gender"
+            }
+        }
         
     }
         
