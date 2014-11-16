@@ -87,23 +87,42 @@ class ViewController: UIViewController {
             switch bloodType.bloodType
             {
                 case .APositive:
-                    self.bloodTypeLabel.text = "A+"
+                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                        self.bloodTypeLabel.text = "A+"
+                    })
+
                 case .ANegative:
-                    self.bloodTypeLabel.text = "A-"
+                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                        self.bloodTypeLabel.text = "A-"
+                    })
                 case .BPositive:
-                    self.bloodTypeLabel.text = "B+"
+                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                        self.bloodTypeLabel.text = "B+"
+                    })
                 case .BNegative:
-                    self.bloodTypeLabel.text = "B-"
+                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                        self.bloodTypeLabel.text = "B-"
+                    })
                 case .ABPositive:
-                    self.bloodTypeLabel.text = "AB+"
+                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                        self.bloodTypeLabel.text = "AB+"
+                    })
                 case .ABNegative:
-                    self.bloodTypeLabel.text = "AB-"
+                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                        self.bloodTypeLabel.text = "AB-"
+                    })
                 case .OPositive:
-                    self.bloodTypeLabel.text = "O+"
+                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                        self.bloodTypeLabel.text = "O+"
+                    })
                 case .ONegative:
-                    self.bloodTypeLabel.text = "O-"
+                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                        self.bloodTypeLabel.text = "O-"
+                    })
                 case .NotSet:
-                    self.bloodTypeLabel.text = "User has not set blood type"
+                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                        self.bloodTypeLabel.text = "User has yet to provide blood type info"
+                    })
             }
         }
         
@@ -113,11 +132,17 @@ class ViewController: UIViewController {
         if (gender != nil) {
             switch gender.biologicalSex{
             case .Female:
-                self.genderLabel.text = "Female"
+                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                                        self.genderLabel.text = "Female"
+                })
             case .Male:
-                self.genderLabel.text = "Male"
+                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                    self.genderLabel.text = "Male"
+                })
             case .NotSet:
-                self.genderLabel.text = "User has not set gender"
+                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                    self.genderLabel.text = "User has yet to provide gender info"
+                })
             }
         }
         
