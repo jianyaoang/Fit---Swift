@@ -80,6 +80,35 @@ class ViewController: UIViewController {
                 self.dateOfBirth.text = stringVersionOfDateOfBirth!
             })
         }
+        
+        //querying user blood type
+        if let bloodType = healthStore.bloodTypeWithError(nil)
+        {
+            switch bloodType.bloodType
+            {
+                case .APositive:
+                    self.bloodTypeLabel.text = "A+"
+                case .ANegative:
+                    self.bloodTypeLabel.text = "A-"
+                case .BPositive:
+                    self.bloodTypeLabel.text = "B+"
+                case .BNegative:
+                    self.bloodTypeLabel.text = "B-"
+                case .ABPositive:
+                    self.bloodTypeLabel.text = "AB+"
+                case .ABNegative:
+                    self.bloodTypeLabel.text = "AB-"
+                case .OPositive:
+                    self.bloodTypeLabel.text = "O+"
+                case .ONegative:
+                    self.bloodTypeLabel.text = "O-"
+                case .NotSet:
+                    self.bloodTypeLabel.text = "User has not set blood type"
+            }
+        }
+        
+        
+        
     }
         
     
